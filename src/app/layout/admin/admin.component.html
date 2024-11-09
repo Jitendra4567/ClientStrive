@@ -1,0 +1,56 @@
+<div class="admin-layout">
+    <div class="admin-sidebar">
+        <div class="logo">
+            <a href="javascript:;">
+                <img src="../../../assets/image/logo.png" alt="">
+            </a>
+        </div>
+        <ul>
+            <li>
+                <a href="javascript:;" routerLink="employee">
+                    <i class="fa-solid fa-users"></i>
+                    Employee
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" routerLink="client">
+                    <i class="fa-solid fa-user-tie"></i>
+                    Clients
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" routerLink="projects">
+                    <i class="fa-regular fa-folder"></i>
+                    Projects
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" routerLink="employee-projects">
+                    <i class="fa-regular fa-folder-open"></i>
+                    Employee projects
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" routerLink="meetings">
+                    <i class="fa-regular fa-handshake"></i>
+                    Meetings
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" routerLink="project-changes">
+                    <i class="fa-regular fa-folder-closed"></i>
+                    Project change
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" routerLink="payment">
+                    <i class="fa-regular fa-credit-card"></i>
+                    Payments
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="admin-body">
+        <router-outlet></router-outlet>
+    </div>
+</div>      

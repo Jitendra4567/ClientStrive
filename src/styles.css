@@ -1,0 +1,224 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "Public Sans", sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #dcdcdc;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #acacac;
+}
+
+.card {
+    border: none;
+    background-color: hsl(0deg 0% 0% / 5%);
+}
+
+.card .card-header {
+    padding: 24px 24px 16px 24px;
+    background: transparent;
+}
+
+.card .card-header h5 {
+    margin: 0;
+    font-size: 20px;
+    color: #141c58;
+    font-weight: 600;
+}
+
+.card .card-body {
+    padding: 24px;
+}
+
+.table>thead>tr>th {
+    border: none;
+    background: #404648;
+    color: #FFF;
+    padding: 16px 24px;
+    font-weight: 700;
+}
+
+.table>tbody>tr>td {
+    padding: 16px 24px;
+    font-weight: 500;
+}
+
+.table>thead>tr>th:first-child {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0 1em;
+    width: 100%;
+}
+
+.table>tbody>tr>td {
+    border-bottom: 1px solid #dedede;
+    border-top: 1px solid #dedede;
+}
+
+.table>tbody>tr>td:first-child {
+    border-left: 1px solid #dedede;
+    border-radius: 4px 0 0 4px;
+}
+
+.table>tbody>tr>td:last-child {
+    border-radius: 0 4px 4px 0;
+    border-right: 1px solid #dedede;
+}
+
+.table>thead>tr>th:last-child {
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.btn-primary {
+    background-color: #404648;
+    border-color: #404648;
+    color: #fff;
+    transition: all 0.2s linear;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #404648;
+    border-color: #404648;
+    opacity: 0.9;
+    box-shadow: none;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+    background-color: #404648;
+    border-color: #404648;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 100%;
+}
+
+
+.header-main {
+    padding: 25px 0;
+    background: #ffffff;
+}
+
+.header-main .header-nav ul li {
+    list-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+}
+
+.header-main .header-nav ul li:last-child {
+    margin-right: 0;
+}
+
+.header-main .header-nav ul li a {
+    text-decoration: none;
+    color: #474747;
+    font-size: 14px;
+}
+
+.header-main a.logo {
+    color: #5f71fa;
+    text-decoration: none;
+}
+
+.header-main .header-nav ul li a i {
+    margin-right: 7px;
+}
+
+.header-main .header-nav ul li.has-sub-menu {
+    position: relative;
+}
+
+.header-main .header-nav ul li.has-sub-menu .sub-menu {
+    position: absolute;
+    bottom: -77px;
+    background: white;
+    padding: 10px 25px;
+    white-space: nowrap;
+    z-index: 1;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, .04), 4px 5px 14px 0px rgba(0, 0, 0, .04), 16px 20px 26px 0px rgba(0, 0, 0, .04), 37px 25px 30px 0px rgba(0, 0, 0, .02), 66px 30px 35px 0px rgba(0, 0, 0, .01);
+    border-radius: 8px;
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s linear;
+}
+
+.header-main .header-nav ul li.has-sub-menu .sub-menu a:hover {
+    color: #5f71fa;
+}
+
+.header-main .header-nav ul li.has-sub-menu .sub-menu a {
+    transition: all 0.2s linear;
+}
+
+.header-main .header-nav ul li.has-sub-menu:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.form-control:focus {
+    border-color: #c5c55b;
+    box-shadow: 0 0 0 .25rem rgb(197 197 91 / 25%);
+}
+
+/* //-- */
+.bg-blue {
+    background-color: lightblue;
+}
+
+.bg-pink {
+    background-color: lightcoral;
+}
+
+.text-input-highlight-container {
+    position: relative;
+}
+
+.text-input-element {
+    background: none;
+    position: relative;
+    z-index: 2;
+}
+
+.text-highlight-element {
+    overflow: hidden !important;
+    word-break: break-word;
+    white-space: pre-wrap;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    color: rgba(0, 0, 0, 0);
+    z-index: 1;
+}
+
+.text-highlight-tag {
+    border-radius: 8px;
+    padding: 1px 3px;
+    margin: -1px -3px;
+    overflow-wrap: break-word;
+}

@@ -1,0 +1,89 @@
+<div class="mb-3">
+    <button class="btn btn-primary" routerLink="/admin/client">
+        <i class="fa-solid fa-angle-left me-1"></i>
+        Back
+    </button>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h5>Add Client</h5>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="clientFrom">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Contact Person Name</label>
+                        <input type="text" class="form-control" formControlName="contactPersonName">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Company Name</label>
+                        <input type="text" class="form-control" formControlName="companyName">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-control" formControlName="address">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">City</label>
+                        <input type="text" class="form-control" formControlName="city">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Pincode</label>
+                        <input type="text" class="form-control" formControlName="pincode">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">State</label>
+                        <input type="text" class="form-control" formControlName="state">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Strength</label>
+                        <input type="text" class="form-control" formControlName="EmployeeStrength">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">GSTNo</label>
+                        <input type="text" class="form-control" formControlName="gstNo">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">ContactNo</label>
+                        <input type="text" class="form-control" formControlName="contactNo">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">RegNo</label>
+                        <input type="text" class="form-control" formControlName="regNo">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <div class="text-end">
+            <button class="btn btn-primary" (click)="saveClient()" *ngIf="!clientId">
+                <i class="fa-regular fa-floppy-disk me-1"></i>
+                Save
+            </button>
+            <button class="btn btn-primary" (click)="saveClient()" *ngIf="clientId">
+                <i class="fa-regular fa-floppy-disk me-1"></i>
+                Update client
+            </button>
+        </div>
+    </div>
+</div>

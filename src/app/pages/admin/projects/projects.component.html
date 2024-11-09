@@ -1,0 +1,169 @@
+<div class="mb-3">
+    <button class="btn btn-primary" routerLink="add">
+        <i class="fa-solid fa-plus align-middle me-1"></i>
+        Add Project
+    </button>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+            <h5 class="m-0">Project</h5>
+            <div>
+                <div class="d-flex align-items-end">
+                    <div style="width: 230px;">
+                        <label style="font-size: 12px;">Search By Project Lead</label>
+                        <select class="form-select" [(ngModel)]="selectedProjectLead" (change)="filterProjectsByLead()">
+                            <option *ngFor="let data of allEmployee" [value]="data.empId">{{ data.empName }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table align-middle text-nowrap">
+                <thead>
+                    <tr>
+                        <th scope="col">clientProjectId</th>
+                        <th scope="col">clientName</th>
+                        <th scope="col">projectName</th>
+                        <th scope="col">startDate</th>
+                        <th scope="col">expectedEndDate</th>
+                        <th scope="col">empId</th>
+                        <th scope="col">empCode</th>
+                        <th scope="col">empName</th>
+                        <th scope="col">empEmailId</th>
+                        <th scope="col">empDesignation</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of allProjects">
+                        <td>{{ data.clientProjectId }}</td>
+                        <td>{{ data.clientName }}</td>
+                        <td>{{ data.projectName }}</td>
+                        <td>{{ data.startDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                        <td>{{ data.expectedEndDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                        <td>{{ data.empId }}</td>
+                        <td>{{ data.empCode }}</td>
+                        <td>{{ data.empName }}</td>
+                        <td>{{ data.empEmailId }}</td>
+                        <td>{{ data.empDesignation }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm me-2"
+                                (click)="viewProjectDetail(data.clientProjectId)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                            <button class="btn btn-primary btn-sm me-2"
+                                (click)="updateProjectByProjectId(data.clientProjectId)" disabled>
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="btn btn-primary btn-sm"
+                                (click)="deleteProjectByProjectId(data.clientProjectId)">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Project Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <span>Project Name</span>
+                            </div>
+                            <div>
+                                <span>{{ projectDetail?.projectName }}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <span>Contact Person</span>
+                            </div>
+                            <div>
+                                <span>{{ projectDetail?.contactPerson }}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <span>Contact Person ContactNo</span>
+                            </div>
+                            <div>
+                                <span>{{ projectDetail?.contactPersonContactNo }}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <span>Contact Person EmailId</span>
+                            </div>
+                            <div>
+                                <span>{{ projectDetail?.contactPersonEmailId }}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <span>Completed Date</span>
+                            </div>
+                            <div>
+                                <span>{{ projectDetail?.completedDate }}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <span>Project Cost</span>
+                            </div>
+                            <div>
+                                <span>{{ projectDetail?.projectCost }}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <span>Total Emp Working</span>
+                            </div>
+                            <div>
+                                <span>{{ projectDetail?.totalEmpWorking }}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-block">
+                            <div class="mb-2">
+                                <span>Project Details</span>
+                            </div>
+                            <div>
+                                <span>{{ projectDetail?.projectDetails }}</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

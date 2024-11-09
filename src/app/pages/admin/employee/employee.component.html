@@ -1,0 +1,48 @@
+<div class="mb-3">
+  <button class="btn btn-primary" routerLink="add">
+    <i class="fa-solid fa-plus align-middle me-1"></i>
+    Add Employee
+  </button>
+</div>
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <h5 class="m-0">Employee</h5>
+      <div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text h-100">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+          <input type="text" class="form-control" placeholder="Search Employee">
+          <!-- [(ngModel)]="searchModel" -->
+        </div>
+      </div>
+    </div>
+    <div>
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Code</th>
+            <th scope="col">Designation</th>
+            <th scope="col">EmailId</th>
+            <th scope="col">Name</th>
+            <th scope="col">Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of allEmployee">
+            <td>{{ data.empId }}</td>
+            <td>{{ data.empCode }}</td>
+            <td>{{ data.empDesignation }}</td>
+            <td>{{ data.empEmailId }}</td>
+            <td>{{ data.empName }}</td>
+            <td>{{ data.role }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

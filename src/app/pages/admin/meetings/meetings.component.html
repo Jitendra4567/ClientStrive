@@ -1,0 +1,201 @@
+<div class="mb-3">
+    <button class="btn btn-primary" (click)="openModal()">
+        <i class="fa-solid fa-plus align-middle me-1"></i>
+        Add meeting
+    </button>
+</div>
+
+<!-- <div class="card mb-3">
+    <div class="card-header">
+        Demo
+    </div>
+    <div class="card-body">
+        <div class="mwlText" mwlTextInputHighlightContainer>
+            <textarea mwlTextInputElement rows="6" class="form-control" [(ngModel)]="text" #textarea
+                (input)="addTags()">
+            </textarea>
+            <mwl-text-input-highlight [tags]="tags" [tagCssClass]="'bg-blue'" [textInputElement]="textarea"
+                (tagMouseEnter)="addDarkClass($event.target)" (tagMouseLeave)="removeDarkClass($event.target)"
+                (tagClick)="tagClicked = $event.tag">
+            </mwl-text-input-highlight>
+        </div>
+        <br>
+        <div class="alert alert-info" *ngIf="tagClicked">
+            Tag clicked! {{ tagClicked.data }}
+        </div>
+    </div>
+</div> -->
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+            <h5 class="m-0">Meeting</h5>
+            <div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text h-100">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Search meeting">
+                    <!-- [(ngModel)]="searchModel" -->
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table align-middle text-nowrap">
+                <thead>
+                    <tr>
+                        <th scope="col">Project MeetingId</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Medium</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                        <th scope="col">Project Name</th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Client Person Names</th>
+                        <th scope="col">LeadBy Employe Name</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of allMeetings">
+                        <td>{{ data.projectMeetingId }}</td>
+                        <td>{{ data.meetingStatus }}</td>
+                        <td>{{ data.meetingTitle }}</td>
+                        <td>{{ data.meetingMedium }}</td>
+                        <td>{{ data.meetingDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                        <td>{{ data.startTime }}</td>
+                        <td>{{ data.endTime }}</td>
+                        <td>{{ data.projectName }}</td>
+                        <td>{{ data.companyName }}</td>
+                        <td>{{ data.clientPersonNames }}</td>
+                        <td>{{ data.leadByEmployeName }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm me-2"
+                                (click)="editMeeting(data)">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="btn btn-primary btn-sm" (click)="removeMeeting(data.projectMeetingId)">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" #modalElement id="exampleModal" data-bs-backdrop="static" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add meeting</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="meetingForm">
+                    <div class="mb-3">
+                        <label class="form-label">Project</label>
+                        <select class="form-select" formControlName="projectId">
+                            <option *ngFor="let data of allProjects" [value]="data.clientProjectId">{{ data.projectName }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Meeting Lead By Employee</label>
+                        <select class="form-select" formControlName="meetingLeadByEmpId">
+                            <option *ngFor="let data of allEmployee" [value]="data.empId">{{ data.empName }}</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Meeting Date</label>
+                                <input type="datetime-local" class="form-control" formControlName="meetingDate">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Meeting Medium</label>
+                                <input type="text" class="form-control" formControlName="meetingMedium">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Start Time</label>
+                                <input type="time" class="form-control" formControlName="startTime">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">End Time</label>
+                                <input type="time" class="form-control" formControlName="endTime">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">isRecordingAvailable</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="isRecordingAvailable" id="inlineRadio1"
+                                    value="true" [(ngModel)]="selectedOption" formControlName="isRecordingAvailable">
+                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="isRecordingAvailable" id="inlineRadio2"
+                                    value="false" [(ngModel)]="selectedOption" formControlName="isRecordingAvailable">
+                                <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3" *ngIf="selectedOption == 'true'">
+                        <label class="form-label">Recording Url</label>
+                        <input type="file" class="form-control" formControlName="recordingUrl">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Client Person Names</label>
+                        <select class="form-select" formControlName="clientPersonNames">
+                            <option *ngFor="let data of clients" [value]="data.contactPersonName">{{ data.contactPersonName }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Meeting Title</label>
+                        <input type="text" class="form-control" formControlName="meetingTitle">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Meeting Status</label>
+                        <select class="form-select" formControlName="meetingStatus">
+                            <option value="scheduled">Scheduled</option>
+                            <option value="ongoing">Ongoing</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Meeting Notes</label>
+                        <textarea class="form-control" rows="5" formControlName="meetingNotes"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark me-1"></i>
+                    Close
+                </button>
+                <button class="btn btn-primary" (click)="saveAddMeeting()" *ngIf="!updateMeetingData">
+                    <i class="fa-regular fa-floppy-disk me-1"></i>
+                    Save
+                </button>
+                <button class="btn btn-primary" (click)="updateMeeting()" *ngIf="updateMeetingData">
+                    <i class="fa-regular fa-floppy-disk me-1"></i>
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

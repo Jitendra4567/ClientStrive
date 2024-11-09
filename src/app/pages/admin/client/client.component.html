@@ -1,0 +1,67 @@
+<div class="mb-3">
+    <button class="btn btn-primary" routerLink="add">
+      <i class="fa-solid fa-plus align-middle me-1"></i>
+      Add Client
+    </button>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <h5 class="m-0">Client</h5>
+        <div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text h-100">
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+            <input type="text" class="form-control" placeholder="Search Client">
+            <!-- [(ngModel)]="searchModel" -->
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive text-nowrap">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th scope="col">ClientId</th>
+              <th scope="col">Contact Person Name</th>
+              <th scope="col">Contact No</th>
+              <th scope="col">Company Name</th>
+              <th scope="col">Employee Strength</th>
+              <th scope="col">Address</th>
+              <th scope="col">City</th>
+              <th scope="col">State</th>
+              <th scope="col">Pincode</th>
+              <th scope="col">GstNo</th>
+              <th scope="col">RegNo</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of clients">
+                <td>{{ data.clientId }}</td>
+                <td>{{ data.contactPersonName }}</td>
+                <td>{{ data.contactNo }}</td>
+                <td>{{ data.companyName }}</td>
+                <td>{{ data.employeeStrength }}</td>
+                <td>{{ data.address }}</td>
+                <td>{{ data.city }}</td>
+                <td>{{ data.state }}</td>
+                <td>{{ data.pincode }}</td>
+                <td>{{ data.gstNo }}</td>
+                <td>{{ data.regNo }}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm me-2" (click)="editClient(data.clientId)">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button class="btn btn-primary btn-sm" (click)="removeClient(data.clientId)">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

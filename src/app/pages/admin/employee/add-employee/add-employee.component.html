@@ -1,0 +1,228 @@
+<div class="mb-3">
+    <button class="btn btn-primary" routerLink="/admin/employee">
+        <i class="fa-solid fa-angle-left me-1"></i>
+        Back
+    </button>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h5>Add Employee</h5>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="employeeForm">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">User Name</label>
+                        <input type="text" class="form-control" formControlName="userName">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Code</label>
+                        <input type="text" class="form-control" formControlName="empCode">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Name</label>
+                        <input type="text" class="form-control" formControlName="empName">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee EmailId</label>
+                        <input type="text" class="form-control" formControlName="empEmailId">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee ContactNo</label>
+                        <input type="text" class="form-control" formControlName="empContactNo">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Alt ContactNo</label>
+                        <input type="text" class="form-control" formControlName="empAltContactNo">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Personal EmailId</label>
+                        <input type="text" class="form-control" formControlName="empPersonalEmailId">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Exp Total Year</label>
+                        <input type="text" class="form-control" formControlName="empExpTotalYear">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Exp Total Month</label>
+                        <input type="text" class="form-control" formControlName="empExpTotalMonth">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee City</label>
+                        <input type="text" class="form-control" formControlName="empCity">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee State</label>
+                        <input type="text" class="form-control" formControlName="empState">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee PinCode</label>
+                        <input type="text" class="form-control" formControlName="empPinCode">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Address</label>
+                        <input type="text" class="form-control" formControlName="empAddress">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Per City</label>
+                        <input type="text" class="form-control" formControlName="empPerCity">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Per State</label>
+                        <input type="text" class="form-control" formControlName="empPerState">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Per Pin Code</label>
+                        <input type="text" class="form-control" formControlName="empPerPinCode">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Employee Per Address</label>
+                        <input type="text" class="form-control" formControlName="empPerAddress">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="text" class="form-control" formControlName="password">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <h6 class="fw-bold m-0 f-18">Employee Skills</h6>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="ErpEmployeeSkills">
+                <div *ngFor="let data of ErpEmployeeSkillsArray.controls; let i = index;">
+                    <div class="row align-items-end" [formGroupName]="i">
+                        <div class="col-sm-3">
+                            <div class="mb-3">
+                                <label class="form-label">Skill</label>
+                                <input type="text" class="form-control" formControlName="skill">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="mb-3">
+                                <label class="form-label">Experinace</label>
+                                <input type="text" class="form-control" formControlName="totalYearExp">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="mb-3">
+                                <label class="form-label">Last version used</label>
+                                <select class="form-select" formControlName="lastVersionUsed">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="mb-3">
+                                <button *ngIf="i == 0" (click)="addSkill()" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+                                <button *ngIf="i != 0" (click)="removeSkill(i)" class="btn btn-primary"><i class="fa-solid fa-minus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <h6 class="fw-bold m-0 f-18">Employee Experiences</h6>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="ErmEmpExperiences">
+                <div *ngFor="let data of ErmEmpExperiencesArray.controls; let i = index">
+                    <div class="card mb-3" [formGroupName]="i">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Company Name</label>
+                                        <input type="text" class="form-control" formControlName="companyName">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Start Date</label>
+                                        <input type="date" class="form-control" formControlName="startDate">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">End Date</label>
+                                        <input type="date" class="form-control" formControlName="endDate">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Designation</label>
+                                        <input type="text" class="form-control" formControlName="designation">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Projects Worked On</label>
+                                        <textarea class="form-control" rows="3" formControlName="projectsWorkedOn"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="text-end">
+                                        <button *ngIf="i == 0" (click)="addExperiences()" class="btn btn-primary"><i class="fa-solid fa-plus me-1"></i>More Experiences</button>
+                                        <button *ngIf="i != 0" (click)="removeExperiences(i)" class="btn btn-primary"><i class="fa-solid fa-minus me-1"></i>Remove Experiences</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <div class="text-end">
+            <button class="btn btn-primary" (click)="saveEmployee()">
+                <i class="fa-regular fa-floppy-disk me-1"></i>
+                Save
+            </button>
+        </div>
+    </div>
+</div>

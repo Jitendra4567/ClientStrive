@@ -1,0 +1,101 @@
+<div class="mb-3">
+    <button class="btn btn-primary" routerLink="/admin/projects">
+        <i class="fa-solid fa-angle-left me-1"></i>
+        Back
+    </button>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h5>Add Projects</h5>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="addProjectsform">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Project Name</label>
+                        <input type="text" class="form-control" formControlName="projectName">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Start Date</label>
+                        <input type="datetime-local" class="form-control" formControlName="startDate">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Expected End Date</label>
+                        <input type="datetime-local" class="form-control" formControlName="expectedEndDate">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Project Manager</label>
+                        <select class="form-select" formControlName="leadByEmpId">
+                            <option *ngFor="let data of allEmployee" [value]="data.empId">{{ data.empName }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Completed Date</label>
+                        <input type="date" class="form-control" formControlName="completedDate">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Contact Person</label>
+                        <input type="text" class="form-control" formControlName="contactPerson">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Contact Person ContactNo</label>
+                        <input type="text" class="form-control" formControlName="contactPersonContactNo">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Total Emp Working</label>
+                        <input type="text" class="form-control" formControlName="totalEmpWorking">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Project Cost</label>
+                        <input type="text" class="form-control" formControlName="projectCost">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Contact Person EmailId</label>
+                        <input type="text" class="form-control" formControlName="contactPersonEmailId">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3">
+                        <label class="form-label">Client Id</label>
+                        <select class="form-select" formControlName="clientId">
+                            <option *ngFor="let data of clients" [value]="data.clientId">{{ data.companyName }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <label class="form-label">Project Details</label>
+                        <textarea class="form-control" formControlName="projectDetails" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <div class="text-end">
+            <button class="btn btn-primary" (click)="saveAddProject()">
+                <i class="fa-regular fa-floppy-disk me-1"></i>
+                Save
+            </button>
+        </div>
+    </div>
+</div>

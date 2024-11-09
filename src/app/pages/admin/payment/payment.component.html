@@ -1,0 +1,115 @@
+<div class="mb-3">
+    <button class="btn btn-primary" (click)="openModal()">
+        <i class="fa-solid fa-plus align-middle me-1"></i>
+        Add Payment
+    </button>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+            <h5 class="m-0">Payment</h5>
+            <div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text h-100">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Search payment">
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table align-middle text-nowrap">
+                <thead>
+                    <tr>
+                        <th scope="col">Project Name</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Payment Mode</th>
+                        <th scope="col">Payment Date</th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of payments">
+                        <td>{{ data.projectName }}</td>
+                        <td>{{ data.amount }}</td>
+                        <td>{{ data.paymentMode }}</td>
+                        <td>{{ data.paymentDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                        <td>{{ data.companyName }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm me-2" (click)="editPayment(data)">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="btn btn-primary btn-sm" (click)="deletePayments(data.projectPaymentId)">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" #modalElement id="exampleModal" data-bs-backdrop="static" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Payment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="paymentForm">
+                    <div class="mb-3">
+                        <label class="form-label">Project</label>
+                        <select class="form-select" formControlName="projectId">
+                            <option *ngFor="let data of allProjects" [value]="data.clientProjectId">{{ data.projectName }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Payment Date</label>
+                        <input type="datetime-local" class="form-control" formControlName="paymentDate">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Payment Mode</label>
+                        <select class="form-select" formControlName="paymentMode">
+                            <option value="Credit Cards">Credit Cards</option>
+                            <option value="Debit Cards">Debit Cards</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Paper Checks">Paper Checks</option>
+                            <option value="eChecks">eChecks</option>
+                            <option value="Digital Payments">Digital Payments</option>
+                            <option value="Money Orders">Money Orders</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Amount</label>
+                        <input type="text" class="form-control" formControlName="amount">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Naration</label>
+                        <input type="text" class="form-control" formControlName="naration">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark me-1"></i>
+                    Close
+                </button>
+                <button class="btn btn-primary" (click)="save()">
+                    <i class="fa-regular fa-floppy-disk me-1"></i>
+                    Save
+                </button>
+                <button class="btn btn-primary" (click)="update()">
+                    <i class="fa-regular fa-floppy-disk me-1"></i>
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

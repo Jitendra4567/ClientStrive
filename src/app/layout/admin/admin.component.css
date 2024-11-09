@@ -1,0 +1,56 @@
+.admin-layout {
+    display: flex;
+    flex-wrap: wrap;
+    background: #fffdf3;
+    height: 100vh;
+    padding: 16px;
+    overflow-y: scroll;
+}
+
+.admin-layout .admin-sidebar {
+    width: 290px;
+    background: #c5c940;
+    border-radius: 0.25rem;
+}
+
+.admin-layout 
+ .admin-body {
+    width: calc(100% - 306px);
+    margin-left: 16px;
+}
+
+.admin-layout .admin-sidebar ul {
+    margin: 0;
+    padding: 20px 10px 0 10px;
+}
+
+.admin-layout .admin-sidebar ul li {
+    list-style: none;
+}
+
+.admin-layout .admin-sidebar ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 12px 14px;
+    color: #404648;
+    font-size: 14px;
+    transition: all 0.2s linear;
+    margin-bottom: 10px;
+}
+.admin-layout .admin-sidebar ul li a:hover {
+    background: white;
+    border-radius: 0.25rem;
+}
+.admin-layout .admin-sidebar ul li a i {
+    margin-right: 15px;
+    font-size: 18px;
+    vertical-align: middle;
+    width: 18px;
+}
+.logo {
+    margin-top: 20px;
+}
+
+.logo img {
+    width: 100%;
+}
